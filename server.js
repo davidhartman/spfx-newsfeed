@@ -16,8 +16,10 @@ app.get('/', function (req, res) {
 // Service Bus Connection string is retrieved from the app env app settings
 var serviceBusService = azure.createServiceBusService(process.env.AZURE_SERVICEBUS_ACCESS_KEY);
 
+console.log(serviceBusService);
+
 // Listener function to pull the Azure service bus and see if a new messages are available
-setInterval(function () {
+/*setInterval(function () {
     serviceBusService.recieveQueueMessages('news', function (error, message) {
         if (!error) {
             // Message received and deleted (default behavior of the service bus)
@@ -27,4 +29,4 @@ setInterval(function () {
             io.emit('item:added', message);
         }
     });
-}, 5);
+}, 5);*/
