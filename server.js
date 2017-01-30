@@ -9,6 +9,7 @@ var azure = require('azure');
 server.listen(port);
 
 app.get('/', function (req, res) {
+    console.log("going to load index.html");
     res.sendFile(__dirname + '/index.html');
 });
 
