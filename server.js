@@ -14,7 +14,7 @@ app.get('/', function (req, res) {
 });
 
 // Service Bus Connection string is retrieved from the app env app settings
-/*var serviceBusService = azure.createServiceBusService(process.env.AZURE_SERVICEBUS_ACCESS_KEY);
+var serviceBusService = azure.createServiceBusService(process.env.AZURE_SERVICEBUS_ACCESS_KEY);
 
 // Listener function to pull the Azure service bus and see if a new messages are available
 setInterval(function () {
@@ -27,4 +27,4 @@ setInterval(function () {
             io.emit('item:added', message);
         }
     });
-}, 5);*/
+}, 5);
