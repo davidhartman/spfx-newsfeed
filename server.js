@@ -9,15 +9,15 @@ var azure = require('azure');
 server.listen(port);
 
 app.get('/', function (req, res) {
+    console.log("going to load index.html");
     res.sendFile(__dirname + '/index.html');
 });
 
-// Service Bus Connection string is retrieved from the app env app settings
-/*var serviceBusService = azure.createServiceBusService(process.env.AZURE_SERVICEBUS_ACCESS_KEY);
+//var serviceBusService = azure.createServiceBusService(process.env.AZURE_SERVICEBUS_ACCESS_KEY);
+var serviceBusService = azure.createServiceBusService('Endpoint=sb://newfeedsb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=HBHGW2BU/NBu2mMxna0ifRisxqsbKpati+TD0jY83E4=');
 
-// Listener function to pull the Azure service bus and see if a new messages are available
 setInterval(function () {
-    serviceBusService.recieveQueueMessages('news', function (error, message) {
+    serviceBusService.receiveQueueMessage('news_feed', function (error, message) {
         if (!error) {
             // Message received and deleted (default behavior of the service bus)
             console.log(message);
@@ -25,5 +25,8 @@ setInterval(function () {
             // Broadcast to all connected clients
             io.emit('item:added', message);
         }
+        else{
+            console.log(error);
+        }
     });
-}, 5);*/
+}, 1000);
